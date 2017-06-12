@@ -14,6 +14,7 @@ $(document).ready(function() {
     template: _.template($("#pet-card-template").html()),
     el: 'body'
   });
+  console.log("right before rendering list");
   myPetListView.render();
 
 });

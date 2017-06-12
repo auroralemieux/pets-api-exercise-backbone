@@ -23,7 +23,9 @@ var PetListView = Backbone.View.extend({
         });
         that.$("#pet-list").append(petView.render().el);
         that.listenTo(petView, "showPet", that.showPet);
+        that.listenTo(petView, "hidePet", that.hidePet);
 
+        // that.listenTo(petView, "deletePet", that.removePet);
       });
 
       return this;
@@ -31,7 +33,18 @@ var PetListView = Backbone.View.extend({
 
 
     events: {
-      "click #add-pet" : "addPet"
+      "click #add-pet" : "addPet",
+
+    },
+
+    removePet: function(event) {
+      this.$("#pet").hide();
+      // event.preventDefault();
+      // event.stopPropagation();
+      console.log(this.model);
+      console.log(event.model);
+      console.log("deleting model");
+      event.model.destroy();
     },
 
 
@@ -63,15 +76,23 @@ var PetListView = Backbone.View.extend({
       this.model.create(newPet);
     },
 
+    // hidePet: function(event) {
+    //   console.log("hiding pet");
+    //   this.$("#pet").hide();
+    // },
+
     showPet: function(event) {
+      console.log("trying to show pet");
       this.$("#pet").empty();
       this.$("#pet").show();
       var petDetailView = new PetView({
       model: event.model,
       template: _.template($("#pet-info-template").html())
     });
-    // this.listenTo(contactDetailView, "showCard", this.showCard);
     this.$("#pet").append(petDetailView.render().el);
+    this.listenTo(petDetailView, "deletePet", this.removePet);
+
+
     }
 });
 
