@@ -1,41 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/_settings.css">
-    <link rel="stylesheet" type="text/css" href="css/foundation.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <title>Fluffers</title>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css/_settings.css">
+  <link rel="stylesheet" type="text/css" href="css/foundation.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <title>Cute Baby Animals</title>
+</head>
+<body>
 
-    <header>
-      <h1>Pets!</h1>
-    </header>
-    <main>
-      <section id='pet'></section>
-      <section id='pet-list'></section>
-      <section id='new-pet'></section>
-    </main>
+  <header>
+    <h1>Pets!</h1>
+  </header>
+  <main>
+    <section class="columns small-12 medium-6 large-6" id='new-pet-form'>
+      <h3>Add a Pet!</h3>
 
-    <!-- Templates -->
+      <form>
+        <section>
+          <label>Name</label>
+          <input type="text" name="name" id="pet-name" placeholder="Enter the pet name here" />
+        </section>
+        <section>
+          <label>Image</label>
+          <input type="text" name="img" id="pet-img" placeholder="Enter the pet image url here" />
+        </section>
+        <section>
+          <label>Breed</label>
+          <input type="text" name="breed" id="pet-breed" placeholder="Enter the pet breed here" />
+        </section>
+        <!-- <section>
+        <label>Age</label>
+        <input type="text" name="age" id="pet-age" placeholder="Enter the pet age here" />
+      </section> -->
+      <section class="row" id="buttons-section">
+        <button id="add-pet" class="medium-3 columns button success">
+          Add a Pet
+        </button>
+      </section>
+    </form>
+  </section>
 
-    <script id="pet-card-template" type="text/template">
-      <li><%- pet.name %></li>
-    </script>
+  <section class="columns small-12 medium-6 large-6" id='pet'></section>
+  <section id='pet-list'></section>
+  <section  id='new-pet'></section>
+</main>
 
-    <script id="pet-info-template" type="text/template">
-      <h3>Name: <%- pet.name %></h3>
-      <h4>Age: <%- pet.age %></h4>
-      <h4>Breed: <%- pet.breed %></h4>
-      <% if(pet.vaccinated){ %>
-        <input type="checkbox" name="vaccinated" checked="checked">
-      <% }else{ %>
-        <input type="checkbox" name="vaccinated">
-      <% } %>
-    </script>
+<!-- Templates -->
 
-    <script src="/app.bundle.js"></script>
+<script id="pet-card-template" type="text/template">
+  <%- name %>
+</script>
 
-  </body>
-  </html>
+<script id="pet-info-template" type="text/template">
+  <h3>Name: <%- name %></h3>
+  <h4>Age: <%- age %></h4>
+  <h4>Breed: <%- breed %></h4>
+  <!-- <% if(pet.vaccinated){ %>
+  <input type="checkbox" name="vaccinated" checked="checked">
+  <% }else{ %>
+  <input type="checkbox" name="vaccinated">
+  <% } %> -->
+</script>
+
+<script src="/app.bundle.js"></script>
+
+</body>
+</html>

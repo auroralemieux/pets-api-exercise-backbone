@@ -1,5 +1,9 @@
 @include foundation-everything;
 
+
+li {
+  list-style: none;
+}
 main {
     background: lightblue;
 }
